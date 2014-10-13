@@ -39,8 +39,11 @@ public class Calculator {
 		String Negative = "Negatives are not allowed: ";
 		int count = 0;
         	for(String number : numbers){
-			total += toInt(number);
-			if(toInt(number) < 0)
+			if(toInt(number) < 1001)
+			{
+				total += toInt(number);
+			}
+			else if(toInt(number) < 0)
 			{
 				Negative = Negative + "," + toInt(number);
 				count++;
