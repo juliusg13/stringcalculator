@@ -6,9 +6,6 @@ public class Calculator {
 		if(text.equals("")){
 			return 0;
 		}
-		if(text.contains("-")){
-			throw new RuntimeException("Negatives not allowed: -1");
-		}
 		if(text.contains("//")){
 			return sum(splitDelims(text));
 		}
@@ -37,10 +34,22 @@ public class Calculator {
 	}
 
  
-    private static int sum(String[] numbers){
- 	    int total = 0;
-        for(String number : numbers){
-		    total += toInt(number);
+	private static int sum(String[] numbers){
+		int total = 0;
+		String Negative = "Negatives are not allowed: ";
+		int count = 0;
+        	for(String number : numbers){
+			total += toInt(number);
+			if(toInt(number) < 0)
+			{
+				Negative = Negative + "," + toInt(number);
+				count++;
+			}
+
+		}
+		if(count > 0){
+			String NewNegative = Negative.replaceFirst(",", "");
+			throw new RuntimeException(NewNegative);
 		}
 		return total;
     }
