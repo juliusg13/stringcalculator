@@ -7,18 +7,18 @@ public class Calculator {
 			return 0;
 		}
 		if(text.contains("//")){
-//			splitDelims(text);
-			String newtext = text.replaceAll("\n", "");
+			
+//			String newtext = text.replaceAll("\n", "");
 
-			String delim = text.substring(2, 3);
+//			String delim = text.substring(2, 3);
 
-			String Newer = newtext.replaceAll(delim, ",");
+//			String Newer = newtext.replaceAll(delim, ",");
 
-			String Newest = Newer.replaceAll("/", "");
+//			String Newest = Newer.replaceAll("/", "");
 
-			String returner = Newest.replaceFirst(",", "");
+//			String returner = Newest.replaceFirst(",", "");
 
-			return sum(splitNumbers(returner));
+			return sum(splitDelims(text));
 		}
 		else if(text.contains(",")){
 			return sum(splitNumbers(text));
@@ -34,12 +34,15 @@ public class Calculator {
 	private static String[] splitNumbers(String numbers){
 	    return numbers.split("(,)|(\n)");
 	}
-//	private static String[] splitDelims(string text){
-//		String delim = text.substring(2);
-//		text.replaceAll(delim, ",");
-//		text = text.substring(3, text.length());
-//		return Text;
-//	}
+	private static String[] splitDelims(String text){
+		String newText = text.replaceAll("\n", "");
+		String delim = text.substring(2, 3);
+		String newer = newText.replaceAll(delim, ",");
+		String Newest = newer.replaceAll("/", "");
+		String returner = Newest.replaceFirst(",", "");
+
+		return (splitNumbers(returner));
+	}
 
  
     private static int sum(String[] numbers){
