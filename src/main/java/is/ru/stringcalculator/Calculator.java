@@ -6,18 +6,10 @@ public class Calculator {
 		if(text.equals("")){
 			return 0;
 		}
+		if(text.contains("-")){
+			throw new RuntimeException("Negatives not allowed: -1");
+		}
 		if(text.contains("//")){
-			
-//			String newtext = text.replaceAll("\n", "");
-
-//			String delim = text.substring(2, 3);
-
-//			String Newer = newtext.replaceAll(delim, ",");
-
-//			String Newest = Newer.replaceAll("/", "");
-
-//			String returner = Newest.replaceFirst(",", "");
-
 			return sum(splitDelims(text));
 		}
 		else if(text.contains(",")){
