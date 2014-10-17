@@ -77,6 +77,9 @@ public class CalculatorTest {
 	public void testForMultipleAnySizeDelim() {
 		assertEquals(6, Calculator.add("//[**][%%%%]\n1**2%%%%3"));
 	}
-
+	@Test
+	public void testforMultipleAnySizeDelim() {
+		assertEquals(10, Calculator.add("//[#$%][###][&&&][%]\n1#$%1###2&&&3%3"));
+	}
 
 }
