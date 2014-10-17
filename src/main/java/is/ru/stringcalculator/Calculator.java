@@ -24,24 +24,50 @@ public class Calculator {
 	    return numbers.split("(,)|(\n)");
 	}
 	private static String[] splitDelims(String text){
-		String delim = "";
+		
 		String text1 = "";
 
 		if(text.contains("[")){
+			int count = 0;
+			for(int i = 0; i < text.length(); i++)
+				{
+					if(text.substring(i, i+1).equals("["))
+					{
+						count++;;
+					}
+				}
 
-			int dindex = text.indexOf("]");
-			String Tdelim = text.substring(3, dindex);
-			for(int i = 0; i < Tdelim.length(); i++)
+			for(int k = 0; k < count; k++)
 			{
-				delim = delim + "\\" + Tdelim.substring(i, i+1);
+				int indexx = text.indexOf("[");
+				int dindex = text.indexOf("]");
+				String delim = "";
+
+				String Tdelim = text.substring(indexx + 1, dindex);
+
+
+				for(int i = 0; i < Tdelim.length(); i++)
+				{
+					delim = delim + "\\" + Tdelim.substring(i, i+1);
+				}
+
+				text = text.substring(dindex+1, text.length());
+
+				text = text.replaceAll("\n", ",");
+
+				text = text.replaceAll(delim, ",");
+				if(k == 0)
+				{
+					text = text.replaceFirst(",", "");
+				}
+
+
 			}
-			text1 = text.substring(dindex+2, text.length());
-			String newText = text1.replaceFirst("\n", "");
-			String returner = newText.replaceAll(delim, ",");
-			return(splitNumbers(returner));
+
+		return splitNumbers(text);
 		}
 		else {
-			delim = text.substring(2, 3);
+			String delim = text.substring(2, 3);
 			text1 = text;
 			String newText = text1.replaceFirst("\n", "");
 			String newer = newText.replaceAll(delim, ",");
