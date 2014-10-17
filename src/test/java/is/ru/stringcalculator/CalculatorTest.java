@@ -69,7 +69,10 @@ public class CalculatorTest {
 	public void testForAnySizeDelim() {
 		assertEquals(6, Calculator.add("//[***]\n1***2***3"));
 	}
-
+	@Test
+	public void testForMultipeDelim() {
+		assertEquals(6, Calculator.add("//[*][%]\n*2%3"));
+	}
 
 
 }
